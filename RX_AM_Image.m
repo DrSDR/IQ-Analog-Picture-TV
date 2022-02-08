@@ -5,6 +5,8 @@ close all;
 
 fs = 48e3;
 
+debugflag = 1;  % set to one for debug plots
+
 [filename, pathname, filterindex] = uigetfile('*.*','Pick a Image IQ wave file','c:\AM_Image');
 
 pathname = [pathname filename];
@@ -73,6 +75,12 @@ h2N = length(h2);
 
 %find preamble
 h2detect = filter(h2,1,message);
+if debugflag
+    figure(56)
+    plot(abs(h2detect));
+    title('Preamble detect signal')
+end
+
 [Imax, index] = max(abs(h2detect));
 index = index + 1;
 data = message(index:end);
@@ -97,6 +105,22 @@ for k = 1:h
     a = index + 1;
     
     iqpic = iqk(a:end);
+    
+    if debugflag
+        figure(54)
+        plot(abs(iqpic))
+        title('Picture ABS line by line')
+        pause(0.1);
+    end
+    
+    
+    % handle cases when not w pixels wide
+    if length(iqpic) >= w
+        iqpic = iqpic(1:w);
+    else
+        iqpic = [iqpic zeros(1, (w - length(iqpic))) ];
+    end
+%     iqpic = iqpic - mean(iqpic);   % remove dc from pic, may need
     pictime(k,:) = 20*log10(abs(iqpic(1:w)));
     iqpic = abs(iqpic);
     pic(k,:) = iqpic(1:w);
