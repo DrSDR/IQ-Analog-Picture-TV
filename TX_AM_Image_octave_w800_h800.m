@@ -27,7 +27,7 @@ f0 = 300;
 
 
 for k = 1:hpixels
-    iqk = [1 + 1.2*data(k,:)] .* exp(1i*2*pi*f0*t);
+    iqk = [1 + 1.9*data(k,:)] .* exp(1i*2*pi*f0*t);
     iqdata(k,:) = iqk;
 end
 
