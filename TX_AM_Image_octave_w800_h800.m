@@ -3,7 +3,7 @@ clear;
 clc;
 pkg load signal
 pkg load image
-
+% iq file will be placed where jpeg file is selected 
 [filename, pathname, filterindex] = uigetfile('*.*','Pick a Image file','c:\AM_Image');
 p1 = pathname;
 pathname = [pathname filename];
