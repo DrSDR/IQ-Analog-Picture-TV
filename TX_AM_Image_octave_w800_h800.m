@@ -68,7 +68,7 @@ data = [preamble data];
 
 
 % [filename, pathname] = uiputfile('*.wav','Save I/Q WAVE File','c:\8LFM\imageIQ.wav');
-p1 = 'C:\BW_SDR_TV_AM_IQ\'
+%  p1 = 'C:\BW_SDR_TV_AM_IQ\'
 pathname = [p1 'AMImageIQ.wav'];
 
 
